@@ -1,0 +1,131 @@
+{
+	"name": "mycommand",
+	"displayName": "mycommand",
+	"description": "my-command",
+	"keywords": [
+		"mycommand",
+		"command",
+		"plugin"
+	],
+	"publisher": "kukutx",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"icon": "./image/logo.png",
+	"activationEvents": [
+		"*"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"configuration": {
+            "type": "object",
+            "title": "mycommand Plugin",
+            "properties": {
+                "mycommandPlugin.Name": {
+                    "type": "string",
+                    "default": "guest",
+                    "description": "你所定义的名字"
+                },
+                "mycommandPlugin.ShowTip": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "启动时显示未定义欢迎页"
+                },
+                "mycommandPlugin.Promptbox": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "官网提示框"
+                }
+            }
+        },
+		"commands": [
+			{
+				"command": "mycommand.SayHello",
+				"title": "欢迎回来"
+			},
+			{
+				"command": "mycommand.webview.hello",
+				"title": "未定义欢迎页"
+			},
+			{
+				"command": "mycommand.getCurrentFilePath",
+				"title": "获取当前路径"
+			},
+			{
+				"command": "mycommand.getIPAdress",
+				"title": "获取本机iP地址"
+			},
+			{
+				"command": "mycommand.cheerio",
+				"title": "爬虫"
+			},
+			{
+				"command": "mycommand.attack",
+				"title": "攻击"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "mycommand.SayHello",
+				"key": "ctrl+f10",
+				"mac": "cmd+f10",
+				"when": "editorTextFocus"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus",
+					"command": "mycommand.getCurrentFilePath",
+					"group": "navigation"
+				}
+			],
+			"explorer/context": [
+				{
+					"when": "editorFocus",
+					"command": "mycommand.getCurrentFilePath",
+					"group": "navigation"
+				}
+			]
+		},
+		"snippets": [
+			{
+				"language": "javascript",
+				"path": "./snippets/javascript.json"
+			},
+			{
+				"language": "javascript",
+				"path": "./snippets/javascript.json"
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.52.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.19.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	},
+	"dependencies": {
+		"chalk": "^4.1.0",
+		"cheerio": "^1.0.0-rc.5",
+		"internet-available": "^1.0.0",
+		"jquery": "^3.5.1",
+		"open": "^7.4.0",
+		"silly-datetime": "^0.1.2",
+		"url-parse": "^1.4.7"
+	}
+}
